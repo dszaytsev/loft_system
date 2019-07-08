@@ -38,11 +38,12 @@ user.methods.setToken = function () {
 
 user.methods.getFields = function () {
   return {
+    id: this._id,
     username: this.username,
     surName: this.surName || '',
     firstName: this.firstName || '',
     middleName: this.middleName || '',
-    image: this.image || '',
+    image: this.img || '',
     permission: this.permission || {},
     access_token: this.access_token || ''
   }

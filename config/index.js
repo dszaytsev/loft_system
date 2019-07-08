@@ -20,3 +20,5 @@ exports.session = {
   'rolling': false,
   'renew': false
 }
+
+exports.uploadDir = './public/uploads'
