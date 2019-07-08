@@ -8,10 +8,7 @@ exports.pug = {
 exports.connectionString = 'mongodb://loftsystem:password@localhost:27017/loftsystem'
 
 exports.bodyParser = {
-  'formidable': {
-    'uploadDir': './public/uploads'
-  },
-  'multipart': true
+  extendTypes: { json: ['text/plain'] }
 }
 
 exports.session = {

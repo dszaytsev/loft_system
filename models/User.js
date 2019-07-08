@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const uuidv4 = require('uuid/v4')
 
 const CRUD = {
   C: { type: Boolean },
@@ -27,8 +28,12 @@ user.methods.setPassword = function (password) {
   this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
 }
 
-user.methods.comparePassword = function (password) {
+user.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.password)
+}
+
+user.methods.setToken = function () {
+  this.access_token = uuidv4()
 }
 
 user.methods.getFields = function () {
