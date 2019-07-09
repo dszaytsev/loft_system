@@ -62,12 +62,10 @@ exports.saveImage = async (ctx, next) => {
 }
 
 exports.delete = async (ctx, next) => {
-  const userId = ctx.params.id
-
   try {
-    await User.findByIdAndDelete(userId)
+    await User.findByIdAndDelete(ctx.params.id)
 
-    ctx.status = 200
+    ctx.body = await User.getAll()
   } catch (e) {
     ctx.throw(e)
   }
