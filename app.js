@@ -8,7 +8,7 @@ const app = new Koa()
 
 app.use(require('koa-static')('./public'))
 
-require('./db')
+require('./services/db')
 
 app.use(require('koa-bodyparser')(config.bodyParser))
 
@@ -21,7 +21,7 @@ app.use(require('koa-session')({ ...config.session,
 const pug = new Pug(config.pug)
 pug.use(app)
 
-const passport = require('./config/passport')
+const passport = require('./services/passport')
 app.use(passport.initialize())
 app.use(passport.session())
 
