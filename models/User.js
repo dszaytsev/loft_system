@@ -39,6 +39,7 @@ user.methods.setToken = function () {
 user.methods.getFields = function () {
   return {
     id: this._id,
+    permissionId: this._id,
     username: this.username,
     surName: this.surName || '',
     firstName: this.firstName || '',
