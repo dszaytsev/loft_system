@@ -50,4 +50,10 @@ user.methods.getFields = function () {
   }
 }
 
+user.statics.getAll = async function () {
+  const users = await this.find()
+
+  return users.map(user => user.getFields())
+}
+
 module.exports = mongoose.model('User', user)

@@ -3,9 +3,9 @@ const uploadFile = require('../services/uploadFile')
 
 exports.getAll = async (ctx, next) => {
   try {
-    const users = await User.find()
+    const users = await User.getAll()
 
-    ctx.body = users.map(user => user.getFields())
+    ctx.body = users
   } catch (e) {
     ctx.throw(e)
   }
