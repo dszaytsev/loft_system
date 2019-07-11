@@ -24,5 +24,10 @@ exports.authFromToken = async (ctx, next) => {
 
   if (Array.isArray(user)) user = user[0]
 
-  ctx.body = user.getFields()
+  if (user) ctx.body = user.getFields()
+  else {
+    ctx.cookies.set('access_token', null)
+    ctx.status = 500
+    ctx.path = '/'
+  }
 }

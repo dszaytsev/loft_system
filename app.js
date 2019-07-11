@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const Pug = require('koa-pug')
 const MongooseStore = require('koa-session-mongoose')
+const socket = require('./services/socket')
 const config = require('./config')
 const router = require('./routes')
 
@@ -28,4 +29,5 @@ app.use(passport.session())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(3000)
+const server = app.listen(3000, () => 'Server started')
+socket(server)
