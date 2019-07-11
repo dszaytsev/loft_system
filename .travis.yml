@@ -3,10 +3,8 @@ node_js:
   - '12.4.0'
 
 deploy:
+  app: dzloftsystem
   provider: heroku
   api_key:
     secure: $heroku
   strategy: git
-
-app:
-  master: webinar-deploy
