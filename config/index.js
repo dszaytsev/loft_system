@@ -5,7 +5,7 @@ exports.pug = {
   'noCache': true
 }
 
-exports.connectionString = 'mongodb://loftsystem:password@localhost:27017/loftsystem'
+exports.connectionString = process.env.MONGODB_CONNECTION || 'mongodb://loftsystem:password@localhost:27017/loftsystem'
 
 exports.bodyParser = {
   extendTypes: { json: ['text/plain'] }

@@ -39,4 +39,4 @@ build
 node_modules
 npm-debug.log
 
-config.json
+.env

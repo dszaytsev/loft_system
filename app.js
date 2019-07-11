@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const Koa = require('koa')
 const Pug = require('koa-pug')
 const MongooseStore = require('koa-session-mongoose')
@@ -14,9 +16,7 @@ require('./services/db')
 app.use(require('koa-bodyparser')(config.bodyParser))
 
 app.use(require('koa-session')({ ...config.session,
-  store: new MongooseStore({
-    connection: require('mongoose')
-  })
+  store: new MongooseStore({ connection: require('mongoose') })
 }, app))
 
 const pug = new Pug(config.pug)
@@ -29,5 +29,6 @@ app.use(passport.session())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-const server = app.listen(3000, () => 'Server started')
+const port = process.env.PORT || 3000
+const server = app.listen(port, () => console.log(`Server started on: ${port}`))
 socket(server)
