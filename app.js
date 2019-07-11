@@ -28,6 +28,16 @@ app.use(passport.session())
 
 app.use(router.routes())
 app.use(router.allowedMethods())
+app.use(async (ctx, next) => {
+  try {
+    await next()
+    if (ctx.status === 404) ctx.throw(404)
+  } catch (err) {
+    console.error(err)
+
+    ctx.status = err.status || 500
+  }
+})
 
 const port = process.env.PORT || 3000
 const server = app.listen(port, () => console.log(`Server started on: ${port}`))
